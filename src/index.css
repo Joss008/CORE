@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Custom colors matching the requested palette (azul marino, negro, plomo, color piel toques) */
+  --color-background: #050811; /* Negro profundo azulado */
+  --color-surface: #0a1020; /* Azul marino oscuro */
+  --color-surface-card: #131b2e; /* Azul marino intermedio */
+  --color-surface-dim: #020409; /* Negro absoluto de fondo */
+  --color-surface-bright: #1f293d; /* Plomo azulado brillante */
+  --color-on-surface: #e2e8f0; /* Plomo claro */
+  --color-on-surface-variant: #94a3b8; /* Plomo medio (lead gray) */
+  
+  --color-primary: #ffcdb2; /* Toque color piel (warm peach accent) */
+  --color-on-primary: #050811;
+  --color-primary-container: #4d2d1b;
+  --color-on-primary-container: #ffeedd;
+  
+  --color-secondary: #2b4c7e; /* Azul marino atlético */
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #17253d;
+  --color-on-secondary-container: #e0eafd;
+  
+  --color-tertiary: #718096; /* Plomo (lead athletic grey) */
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #2d3748;
+  --color-on-tertiary-container: #e2e8f0;
+  
+  --color-error: #ef4444;
+  --color-on-error: #ffffff;
+  --color-error-container: #7f1d1d;
+  --color-on-error-container: #fca5a5;
+  
+  --color-outline: #2a3547;
+  --color-outline-variant: #182232;
+  --color-glass-border: rgba(255, 205, 178, 0.15); /* Borde color piel sutil */
+  --color-status-live: #ffcdb2;
+  --color-institutional-blue: #0c1b33;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    font-family: var(--font-sans);
+  }
+}
+
+/* Beautifully active, neon-glowing kinetic background */
+.kinetic-bg {
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(255, 205, 178, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(43, 76, 126, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(113, 128, 150, 0.1) 0%, transparent 60%),
+    radial-gradient(circle at 80% 85%, rgba(255, 205, 178, 0.08) 0%, transparent 40%),
+    #050811;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.kinetic-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glassmorphic Neon Cards */
+.neon-glass-card {
+  background: rgba(19, 27, 46, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 205, 178, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+              inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neon-glass-card:hover {
+  border-color: rgba(255, 205, 178, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45),
+              0 0 15px rgba(255, 205, 178, 0.15),
+              inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Selected card border & intense neon pulse */
+.selected-card {
+  border-color: #ffcdb2 !important;
+  box-shadow: 0 0 25px rgba(255, 205, 178, 0.45),
+              inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  background: rgba(255, 205, 178, 0.06) !important;
+}
+
+/* Highly vibrant, luminous primary button */
+.primary-glow-btn {
+  background: linear-gradient(135deg, #ffcdb2 0%, #2b4c7e 50%, #4d2d1b 100%);
+  color: #050811;
+  font-weight: 800;
+  box-shadow: 0 0 25px rgba(255, 205, 178, 0.45);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-glow-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.primary-glow-btn:hover::before {
+  left: 100%;
+}
+
+.primary-glow-btn:hover {
+  box-shadow: 0 0 35px rgba(255, 205, 178, 0.75),
+              0 0 10px rgba(43, 76, 126, 0.5);
+  transform: translateY(-2px);
+}
+
+.primary-glow-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 15px rgba(255, 205, 178, 0.4);
+}
+
+/* Secondary athletic glowing button */
+.secondary-glow-btn {
+  background: rgba(19, 27, 46, 0.6);
+  backdrop-filter: blur(8px);
+  color: #e2e8f0;
+  border: 1px solid rgba(43, 76, 126, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.secondary-glow-btn:hover {
+  border-color: #2b4c7e;
+  box-shadow: 0 0 15px rgba(43, 76, 126, 0.3);
+  background: rgba(43, 76, 126, 0.1);
+}
+
+@keyframes pulse-border {
+  0% { border-color: rgba(255, 205, 178, 0.25); box-shadow: 0 0 5px rgba(255, 205, 178, 0.05); }
+  50% { border-color: rgba(255, 205, 178, 0.85); box-shadow: 0 0 15px rgba(255, 205, 178, 0.25); }
+  100% { border-color: rgba(255, 205, 178, 0.25); box-shadow: 0 0 5px rgba(255, 205, 178, 0.05); }
+}
+
+.input-focus-animate:focus-within {
+  animation: pulse-border 2s infinite ease-in-out;
+}
+
+/* HUD Panel scanning line effect */
+.scanline {
+  position: relative;
+}
+.scanline::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 205, 178, 0.06), rgba(113, 128, 150, 0.02), rgba(43, 76, 126, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Custom scrollbars with neon styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(5, 8, 17, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 205, 178, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 190, 70, 0.55);
+}
+

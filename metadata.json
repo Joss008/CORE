@@ -1,0 +1,6 @@
+{
+  "name": "CORE - Bienvenido Atleta",
+  "description": "Plataforma deportiva e eSports de élite para los atletas de la Universidad Nacional de Cañete (UNDC). Gestiona tus disciplinas, sigue torneos en vivo y sube de nivel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
