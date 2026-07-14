@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/CORE/', // <-- Agregado para que las rutas de assets funcionen en GitHub Pages
+    base: '/', // <-- Cambiado a '/' para que funcione correctamente en Render
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
